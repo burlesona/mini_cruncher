@@ -1,0 +1,8 @@
+%h1 Home
+
+- if admin?
+	%p Logged in as Admin.
+	= link_to 'Log Out', logout_path
+- else
+	%p Not logged in.
+	= link_to 'Login', login_path
