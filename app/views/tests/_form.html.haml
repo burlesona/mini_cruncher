@@ -1,0 +1,6 @@
+= simple_form_for @test, :html => { :class => 'standard' } do |f|
+	= f.input :name
+	= f.input :instructions
+	= f.fields_for :questions do |qf|
+		= qf.input :content
+	= f.submit

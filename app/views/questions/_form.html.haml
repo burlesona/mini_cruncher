@@ -1,0 +1,9 @@
+= simple_form_for @question, :html => { :class => 'standard' } do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :test_id
+    = f.input :content
+
+  .form-actions
+    = f.button :submit
