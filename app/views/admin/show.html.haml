@@ -1,0 +1,9 @@
+%h1 Admin
+
+%h2 Clients
+%ul
+	- @clients.each do |client|
+		%li= link_to client.code, client
+
+%hr
+= link_to "Generate Client", "#"
