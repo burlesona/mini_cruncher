@@ -43,4 +43,15 @@ class ClientsController < ApplicationController
 		@client.destroy
 		redirect_to clients_url
 	end
+
+	# This action redirects to the client page
+	# if a valid code is found.
+	def lookup
+		if @client = Client.find_by_code(params[:id])
+			redirect_to @client, :notice => "Logged in."
+		else
+			redirect_to root_url, :alert => "Invalid code entered."
+		end
+	end
+
 end

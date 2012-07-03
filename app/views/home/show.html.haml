@@ -1,5 +1,13 @@
 %h1 Home
 
+%h2 Client Login
+= form_tag lookup_clients_path, :class => 'stacked' do
+	.input
+		= label_tag :id, "Client ID"
+		= text_field_tag :id
+	.input
+		= submit_tag "Login"
+
 - if admin?
 	%p Logged in as Admin.
 	= link_to 'Log Out', logout_path
