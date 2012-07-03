@@ -3,14 +3,17 @@ class Client < ActiveRecord::Base
 
   has_many :tests
 
-  before_create :generate_code
+  before_validation :generate_code
 
   validates_presence_of :code
   validates_uniqueness_of :code
 
-
   def generate_code
-  	self.code = SecureRandom.hex(6)
+  	self.code ||= SecureRandom.hex(3).upcase
+  end
+
+  def to_param
+  	code
   end
 
 end
