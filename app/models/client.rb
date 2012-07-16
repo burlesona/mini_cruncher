@@ -16,4 +16,8 @@ class Client < ActiveRecord::Base
   	code
   end
 
+  def to_s
+    code
+  end
+
 end

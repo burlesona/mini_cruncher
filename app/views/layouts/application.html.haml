@@ -7,4 +7,5 @@
 		= csrf_meta_tags
 	%body
 		#notifications= flash_messages
+		%header= link_to 'Home', root_path
 		%section#main= yield
