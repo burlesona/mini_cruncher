@@ -5,8 +5,13 @@
 	%b Instructions:
 	= @test.instructions
 
-- @test.questions.each do |question|
-	.question= question.content
+%ol.questions
+	- @test.questions.each do |question|
+		%li
+			%strong= question.content
+			%ol.answers
+				- question.answers.each do |answer|
+					%li= answer.content
 
 - if admin?
 	= link_to 'Edit', edit_test_path(@test)
