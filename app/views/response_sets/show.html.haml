@@ -9,6 +9,8 @@
 				= response.question.content
 				%br
 				= response.answer
+	%h2 Total Value
+	= @response_set.total_value
 
 
 = link_to 'Edit', edit_response_set_path(@response_set)

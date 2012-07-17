@@ -14,6 +14,10 @@ class ResponseSet < ActiveRecord::Base
   # CALLBACKS
   after_create :initialize_responses
 
+  def total_value
+  	self.responses.joins(:answer).sum('answers.value')
+  end
+
   private
   def initialize_responses
   	self.test.questions.each do |question|
