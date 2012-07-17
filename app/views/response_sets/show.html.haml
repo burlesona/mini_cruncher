@@ -1,11 +1,15 @@
-%p#notice= notice
+%p
+	%b Client:
+	= @response_set.client
+%p
+	%h1= @response_set.test
+	%ol.responses
+		- @response_set.responses.each do |response|
+			%li
+				= response.question.content
+				%br
+				= response.answer
 
-%p
-  %b Client:
-  = @response_set.client
-%p
-  %b Test:
-  = @response_set.test
 
 = link_to 'Edit', edit_response_set_path(@response_set)
 \|

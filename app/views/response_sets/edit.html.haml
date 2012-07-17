@@ -1,7 +1,17 @@
-%h1 Editing response_set
+%h1
+	Responding to
+	= @response_set.test.name
+.instructions
+	%strong Instructions:
+	= @response_set.test.instructions
 
-= render 'form'
+%h2 Questions
+= simple_form_for @response_set, :html => { :class => 'standard' } do |f|
+	%ol.questions
+		= f.fields_for :responses, do |rf|
+			%li
+				%strong= rf.object.question
+				= rf.association :answer, :collection => rf.object.question.answers, :as => :radio_buttons
 
-= link_to 'Show', @response_set
-\|
-= link_to 'Back', response_sets_path
+	= f.submit
+= link_to 'Cancel', response_sets_path
