@@ -1,5 +1,4 @@
 MiniCruncher::Application.routes.draw do
-  resources :response_sets
 
   resource :home, :only => :show
   resource :admin, :only => :show
@@ -7,7 +6,8 @@ MiniCruncher::Application.routes.draw do
   resources :clients do
   	post 'lookup', :on => :collection
   end
+	resources :master_tests
   resources :tests
-  resources :questions
+
   root :to => "home#show"
 end

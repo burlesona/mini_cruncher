@@ -1,4 +1,5 @@
 %fieldset
+	= f.error_notification
 	= f.input :content, :label => "Question"
 	= f.hidden_field :_destroy
 	= f.fields_for :answers do |builder|

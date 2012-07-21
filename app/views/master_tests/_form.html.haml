@@ -1,0 +1,8 @@
+= simple_form_for @master_test, :html => { :class => 'stacked' } do |f|
+	= f.error_notification
+	= f.input :name
+	= f.input :instructions
+	= f.fields_for :question_groups do |builder|
+		= render 'question_group_fields', f: builder
+	.input= link_to_add_fields "Add Question Group", f, :question_groups
+	= f.submit

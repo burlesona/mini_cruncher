@@ -1,19 +1,18 @@
 %p
-	%b Name:
-	= @test.name
+	%b Client:
+	= @response_set.client
 %p
-	%b Instructions:
-	= @test.instructions
+	%h1= @response_set.test
+	%ol.responses
+		- @response_set.responses.each do |response|
+			%li
+				= response.question.content
+				%br
+				= response.answer
+	%h2 Total Value
+	= @response_set.total_value
 
-%ol.questions
-	- @test.questions.each do |question|
-		%li
-			%strong= question.content
-			%ol.answers
-				- question.answers.each do |answer|
-					%li= answer.content
 
-- if admin?
-	= link_to 'Edit', edit_test_path(@test)
-	|
-	= link_to 'Back', tests_path
+= link_to 'Edit', edit_response_set_path(@response_set)
+\|
+= link_to 'Back', response_sets_path

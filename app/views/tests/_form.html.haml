@@ -1,7 +1,4 @@
-= simple_form_for @test, :html => { :class => 'stacked' } do |f|
-	= f.input :name
-	= f.input :instructions
-	= f.fields_for :questions do |builder|
-		= render 'question_fields', f: builder
-	.input= link_to_add_fields "Add Question", f, :questions
+= simple_form_for @response_set, :html => { :class => 'standard' } do |f|
+	= f.association :client
+	= f.association :test
 	= f.submit

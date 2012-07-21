@@ -1,6 +1,4 @@
 class TestsController < ApplicationController
-	before_filter :authenticate
-
 	def index
 		@tests = Test.all
 	end

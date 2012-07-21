@@ -1,0 +1,21 @@
+%h1 Master Tests
+
+%table
+  %tr
+    %th Name
+    %th Instructions
+    %th
+    %th
+    %th
+
+  - @master_tests.each do |master_test|
+    %tr
+      %td= master_test.name
+      %td= master_test.instructions
+      %td= link_to 'Show', master_test
+      %td= link_to 'Edit', edit_master_test_path(master_test)
+      %td= link_to 'Destroy', master_test, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Test', new_master_test_path

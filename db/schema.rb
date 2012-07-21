@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120716210112) do
+ActiveRecord::Schema.define(:version => 20120721225013) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
@@ -21,39 +21,70 @@ ActiveRecord::Schema.define(:version => 20120716210112) do
     t.datetime "updated_at",  :null => false
   end
 
+  add_index "answers", ["question_id"], :name => "index_answers_on_question_id"
+
   create_table "clients", :force => true do |t|
     t.string   "code"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
-  create_table "questions", :force => true do |t|
-    t.integer  "test_id"
-    t.string   "content"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "response_sets", :force => true do |t|
-    t.integer  "client_id"
-    t.integer  "test_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "responses", :force => true do |t|
-    t.integer  "response_set_id"
-    t.integer  "question_id"
-    t.integer  "answer_id"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
-  end
-
-  create_table "tests", :force => true do |t|
+  create_table "master_tests", :force => true do |t|
     t.string   "name"
     t.text     "instructions"
+    t.boolean  "random"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end
+
+  create_table "question_groups", :force => true do |t|
+    t.integer  "master_test_id"
+    t.string   "name"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "question_groups", ["master_test_id"], :name => "index_question_groups_on_master_test_id"
+
+  create_table "questions", :force => true do |t|
+    t.integer  "question_group_id"
+    t.string   "content"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "questions", ["question_group_id"], :name => "index_questions_on_question_group_id"
+
+  create_table "response_groups", :force => true do |t|
+    t.integer  "test_id"
+    t.integer  "question_group_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "response_groups", ["question_group_id"], :name => "index_response_groups_on_question_group_id"
+  add_index "response_groups", ["test_id"], :name => "index_response_groups_on_test_id"
+
+  create_table "responses", :force => true do |t|
+    t.integer  "response_group_id"
+    t.integer  "question_id"
+    t.integer  "answer_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "responses", ["answer_id"], :name => "index_responses_on_answer_id"
+  add_index "responses", ["question_id"], :name => "index_responses_on_question_id"
+  add_index "responses", ["response_group_id"], :name => "index_responses_on_response_group_id"
+
+  create_table "tests", :force => true do |t|
+    t.integer  "client_id"
+    t.integer  "master_test_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "tests", ["client_id"], :name => "index_tests_on_client_id"
+  add_index "tests", ["master_test_id"], :name => "index_tests_on_master_test_id"
 
 end
