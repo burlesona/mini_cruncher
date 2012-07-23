@@ -1,0 +1,16 @@
+form {
+	fieldset {
+		background: $light2; padding: $baseline;
+		border: 1px solid $gray; @include border-radius(4px);
+		fieldset { background: $light1;
+			fieldset { background : #FAFAFA; border-color: $light2; }
+		}
+	}
+
+	fieldset.answer { 
+		label { width: 8% !important; margin: 1% !important; text-align: left; }
+		input.answer { width: 55% !important; margin: 0 !important; }
+		input.value { width: 15% !important; margin: 0 !important; @include standard_input; }
+		a.button { float: left; clear: both; margin-left: 10%; }
+	}
+}
