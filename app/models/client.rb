@@ -1,28 +1,30 @@
 class Client < ActiveRecord::Base
-  # MASS-ASSIGNMENT PROTECTION
-  attr_accessible :code
-  
-  # ASSOCIATIONS
-  has_many :tests
+	# MASS-ASSIGNMENT PROTECTION
+	attr_accessible :code, :master_test_ids
 
-  # VALIDATIONS
-  validates_presence_of :code
-  validates_uniqueness_of :code
+	# ASSOCIATIONS
+	has_many :tests
+	has_many :master_tests, :through => :tests
 
-  # CALLBACKS
-  before_validation :generate_code
+	# VALIDATIONS
+	validates_presence_of :code
+	validates_uniqueness_of :code
 
-  def to_param
-  	code
-  end
+	# CALLBACKS
+	after_initialize :generate_code
 
-  def to_s
-    code
-  end
+	# METHODS
+	def to_param
+		code
+	end
 
-  private
-  def generate_code
-    self.code ||= SecureRandom.hex(3).upcase
-  end
+	def to_s
+		code
+	end
+
+	private
+	def generate_code
+		self.code ||= SecureRandom.hex(3).upcase
+	end
 
 end

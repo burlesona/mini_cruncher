@@ -7,6 +7,7 @@ class ClientsController < ApplicationController
 
 	def show
 		@client = Client.find_by_code(params[:id])
+		@master_tests = MasterTest.all
 	end
 
 	def new
@@ -17,7 +18,7 @@ class ClientsController < ApplicationController
 		@client = Client.new(params[:client])
 
 		if @client.save
-			redirect_to :back, notice: 'Client was successfully created.'
+			redirect_to @client, notice: 'Client was successfully created.'
 		else
 			render :new
 		end

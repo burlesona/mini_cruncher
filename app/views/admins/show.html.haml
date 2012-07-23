@@ -1,9 +1,19 @@
 %h1 Admin
 
-%h2 Clients
-%ul
-	- @clients.each do |client|
-		%li= link_to client.code, client
+%p
+	%strong Master Tests:
+	%ul
+		- @master_tests.each do |master|
+			%li= link_to master.name, master
+	= link_to "New Master Test", new_master_test_path, :class => 'button'
 
-%hr
-= link_to "Generate Client", clients_path, :method => :post
+%p
+	%strong Clients:
+	%ul
+		- @clients.each do |client|
+			%li= link_to client.code, client
+	= link_to "Generate Client", new_client_path, :class => 'button'
+
+%p
+	%strong Tests<br>
+	= link_to "Manage Tests", tests_path, :class => 'button'

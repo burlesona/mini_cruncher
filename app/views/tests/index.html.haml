@@ -1,21 +1,21 @@
-%h1 Listing response_sets
+%h1 Listing Tests
 
 %table
   %tr
     %th Client
-    %th Test
+    %th Master Test
     %th
     %th
     %th
 
-  - @response_sets.each do |response_set|
+  - @tests.each do |test|
     %tr
-      %td= response_set.client
-      %td= response_set.test
-      %td= link_to 'Show', response_set
-      %td= link_to 'Edit', edit_response_set_path(response_set)
-      %td= link_to 'Destroy', response_set, :confirm => 'Are you sure?', :method => :delete
+      %td= test.client
+      %td= test.master_test
+      %td= link_to 'Show', test
+      %td= link_to 'Edit', edit_test_path(test)
+      %td= link_to 'Destroy', test, :confirm => 'Are you sure?', :method => :delete
 
 %br
 
-= link_to 'New Response set', new_response_set_path
+= link_to 'Assign a new test', new_test_path, :class => 'button'

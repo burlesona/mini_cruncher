@@ -1,7 +1,12 @@
 %p
-  %b Client Code:
-  = @client.code
-
+	%strong Client Code:
+	= @client.code
+%p
+	%strong Assigned Tests:
+	%ol
+		- @client.tests.each do |test|
+			%li= test.name
+		
 = link_to 'Edit', edit_client_path(@client)
 \|
 = link_to 'Back', clients_path

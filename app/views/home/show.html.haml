@@ -10,13 +10,8 @@
 
 - if admin?
 	%h2 Administrator
+	%p= link_to 'Control Panel', admin_path
 	%p= link_to 'Log Out', logout_path
-	%p
-		%strong Menu
-		%ul
-			%li= link_to 'Master Tests', master_tests_path
-			%li= link_to 'Client Tests', tests_path
-
 - else
 	%p Admin Login:
 	= link_to 'Login', login_path

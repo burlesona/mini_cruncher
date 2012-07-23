@@ -1,17 +1,20 @@
 %h1
-	Responding to
-	= @response_set.test.name
+	Taking Test:
+	= @test.name
 .instructions
 	%strong Instructions:
-	= @response_set.test.instructions
+	= @test.instructions
+
+%hr 
 
 %h2 Questions
-= simple_form_for @response_set, :html => { :class => 'standard' } do |f|
-	%ol.questions
-		= f.fields_for :responses, do |rf|
-			%li
-				%strong= rf.object.question
-				= rf.association :answer, :collection => rf.object.question.answers, :as => :radio_buttons
+= simple_form_for @test, :html => { :class => 'standard' } do |f|
+	= f.fields_for :response_groups, do |group_f|
+		%fieldset
+			%legend= group_f.object.name
+			= group_f.fields_for :responses, do |response_f|
+				%strong= response_f.object.prompt
+				= response_f.association :answer, :collection => response_f.object.question.answers, :as => :radio_buttons
 
 	= f.submit
-= link_to 'Cancel', response_sets_path
+= link_to 'Cancel', tests_path
