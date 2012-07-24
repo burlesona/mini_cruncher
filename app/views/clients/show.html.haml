@@ -5,8 +5,4 @@
 	%strong Assigned Tests:
 	%ol
 		- @client.tests.each do |test|
-			%li= test.name
-		
-= link_to 'Edit', edit_client_path(@client)
-\|
-= link_to 'Back', clients_path
+			%li= link_to test.name, edit_test_path(test)

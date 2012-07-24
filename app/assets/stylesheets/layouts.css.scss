@@ -1,1 +1,13 @@
+header { @include container; padding: $baseline/2 0; }
 section#main { @include container; }
+
+nav.main {
+	strong { float: left; padding-right: $baseline/2; }
+	ul { list-style: square;
+		li { display: block; list-style: square; float: left; margin: 0 3px; }
+		li:before { content: " | "; }
+		li:first-child:before { content: ""; }
+	}
+}
+
+div.admin_login { padding-top: 100px; font-size: 13px; }

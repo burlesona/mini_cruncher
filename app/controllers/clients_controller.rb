@@ -1,5 +1,5 @@
 class ClientsController < ApplicationController
-	before_filter :authenticate, :except => :show
+	before_filter :authenticate, :except => [:show, :lookup]
 
 	def index
 		@clients = Client.all

@@ -1,17 +1,16 @@
-%h1 Home
-
 %h2 Client Login
+%p
+	Please enter your login code below.
 = form_tag lookup_clients_path, :class => 'stacked' do
 	.input
-		= label_tag :id, "Client ID"
 		= text_field_tag :id
 	.input
 		= submit_tag "Login"
 
-- if admin?
-	%h2 Administrator
-	%p= link_to 'Control Panel', admin_path
-	%p= link_to 'Log Out', logout_path
-- else
-	%p Admin Login:
-	= link_to 'Login', login_path
+.admin_login
+	- if admin?
+		= link_to "Logout Admin", logout_path
+		|
+		= link_to "Admin Control Panel", admin_path
+	- else
+		= link_to "Admin Login", login_path

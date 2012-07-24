@@ -1,0 +1,9 @@
+- unless controller.controller_name == "home"
+	%nav.main
+		%strong Menu:
+		%ul
+			%li= link_to "Home Screen", root_path
+			- if admin?
+				%li= link_to "Admin Control Panel", admin_path
+				%li= link_to "Logout", logout_path
+	%hr
