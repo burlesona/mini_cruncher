@@ -1,7 +1,9 @@
 !!!
 %html
 	%head
-		%title MiniCruncher
+		%title
+			= "[DEV]" unless Rails.env.production?
+			MiniCruncher
 		= stylesheet_link_tag "application", :media => "all"
 		= javascript_include_tag "application"
 		= csrf_meta_tags
