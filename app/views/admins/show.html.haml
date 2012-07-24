@@ -1,19 +1,20 @@
 %h1 Administrator Control Panel
 
-%p
-	%strong Master Tests:
-	%ul
-		- @master_tests.each do |master|
-			%li= link_to master.name, master
-	= link_to "New Master Test", new_master_test_path, :class => 'button'
+.control_panel
+	.column
+		%strong Master Tests:
+		%ul
+			- @master_tests.each do |master|
+				%li= link_to master.name, master
+		= link_to "New Master Test", new_master_test_path, :class => 'button'
 
-%p
-	%strong Clients:
-	%ul
-		- @clients.each do |client|
-			%li= link_to client.code, client
-	= link_to "Generate Client", new_client_path, :class => 'button'
+	.column
+		%strong Clients:
+		%ul
+			- @clients.each do |client|
+				%li= link_to client.code, client
+		= link_to "Generate Client", new_client_path, :class => 'button'
 
-%p
-	%strong Tests<br>
-	= link_to "Manage Tests", tests_path, :class => 'button'
+	.column
+		%strong Tests<br>
+		= link_to "Manage Test Assignments", tests_path, :class => 'button'

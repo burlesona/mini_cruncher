@@ -5,4 +5,9 @@
 	%strong Assigned Tests:
 	%ol
 		- @client.tests.each do |test|
-			%li= link_to test.name, edit_test_path(test)
+			%li
+				= link_to test.name, edit_test_path( test )
+				= link_to "Delete", test, :method => :delete, :confirm => "Are you sure?", :class => "small button danger" if admin?
+
+- if admin?
+	= link_to "Edit Client", edit_client_path( @client )

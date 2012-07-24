@@ -1,3 +1,5 @@
 = simple_form_for @client, :html => { :class => 'standard' } do |f|
 	= f.input :code
+	= f.input :master_test_ids, :collection => MasterTest.all, :as => :check_boxes
+	- # TODO: This only works on creation right now, unchecking a test won't actually unassign it. This needs to be fixed.
 	= f.submit
