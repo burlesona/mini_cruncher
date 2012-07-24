@@ -6,8 +6,12 @@
 	%ol
 		- @client.tests.each do |test|
 			%li
-				= link_to test.name, edit_test_path( test )
-				= link_to "Unassign", test_path(test, :redirect_back => 1), :method => :delete, :confirm => "Are you sure you wish to unassign this test? Any current progress on this test will be lost.", :class => "small button danger" if admin?
+				= test.name
+				- if admin?
+					= link_to "View Report", test, :class => 'small button'
+					= link_to "Unassign", test_path(test, :target => :back), :method => :delete, :confirm => "Are you sure you wish to unassign this test? Any current progress on this test will be lost.", :class => "small button danger"
+				- else
+					= link_to 'Take / Revise Test', edit_test_path(test), :class => 'small button'
 
 - if admin?
 	%p
@@ -15,5 +19,5 @@
 		= simple_form_for @new_test, :html => { :class => 'stacked' } do |f|
 			= f.hidden_field :client_id, :value => @client.id
 			= f.association :master_test, :label => false, :collection => MasterTest.all
-			= hidden_field_tag :redirect_back, "1"
+			= hidden_field_tag :target, :back
 			= f.submit "Assign"

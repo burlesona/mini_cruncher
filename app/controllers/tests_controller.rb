@@ -1,4 +1,6 @@
 class TestsController < ApplicationController
+	before_filter :authenticate, :except => [:edit, :update]
+
 	def index
 		@tests = Test.all
 	end
@@ -13,13 +15,13 @@ class TestsController < ApplicationController
 
 	def edit
 		@test = Test.find(params[:id])
+		authorize! @test.client
 	end
 
 	def create
 		@test = Test.new(params[:test])
-
 		if @test.save
-			redirect_to target_or(@test), notice: 'Test was successfully created.'
+			redirect_to target_or(@test), notice: 'Test was successfully assigned.'
 		else
 			render :new
 		end
@@ -27,9 +29,10 @@ class TestsController < ApplicationController
 
 	def update
 		@test = Test.find(params[:id])
+		authorize! @test.client
 
 		if @test.update_attributes(params[:test])
-			redirect_to @test, notice: 'Test was successfully updated.'
+			redirect_to target_or(@test), notice: 'Test was successfully updated.'
 		else
 			render :edit
 		end
@@ -41,14 +44,4 @@ class TestsController < ApplicationController
 		@test.destroy
 		redirect_to target_or(tests_url)
 	end
-
-	private
-	def target_or(object)
-		if params[:redirect_back]
-			:back
-		else
-			object
-		end
-	end
-
 end

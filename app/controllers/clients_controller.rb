@@ -7,6 +7,8 @@ class ClientsController < ApplicationController
 
 	def show
 		@client = Client.find_by_code(params[:id])
+		authorize! @client
+		
 		@new_test = Test.new
 	end
 
@@ -48,7 +50,9 @@ class ClientsController < ApplicationController
 	# This action redirects to the client page
 	# if a valid code is found.
 	def lookup
+		reset_session
 		if @client = Client.find_by_code(params[:id])
+			session[:client] = @client.code
 			redirect_to @client, :notice => "Logged in."
 		else
 			redirect_to root_url, :alert => "Invalid code entered."

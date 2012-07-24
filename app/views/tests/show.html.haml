@@ -2,7 +2,8 @@
 	%strong Client:
 	= @test.client
 %p
-	%h1= @test.name
+	%h1
+		= @test.name
 %p
 	%h3 Result Summary
 	%ul.results
@@ -23,6 +24,4 @@
 						= response.answer
 
 %p
-	= link_to 'Back', tests_path
-	|
-	= link_to 'Edit', edit_test_path(@test)
+	= link_to 'Back to Client Page', client_path(@test.client)
