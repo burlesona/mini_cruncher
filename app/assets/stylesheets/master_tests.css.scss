@@ -14,10 +14,10 @@ form {
 }
 
 form.master_test {
-	div.answers { margin-bottom: $baseline; }
-	div.answer {
-		margin-bottom: $baseline/3;
+	fieldset.answer {
+		padding: 0; background: none; border: none; margin-bottom: $baseline/3;
 		label { margin-right: $baseline/3; font-weight: 700; }
 		input { @include standard_input; margin-right: $baseline/3; }
-	}	
+	}
+	div.question_controls { margin-top: $baseline/2; padding-top: $baseline/2; border-top: 1px solid $tl1; }
 }

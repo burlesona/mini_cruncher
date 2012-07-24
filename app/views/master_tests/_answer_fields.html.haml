@@ -1,5 +1,5 @@
-.answer
-	= f.input :content, :label => "Answer"
-	= f.input :value
+%fieldset.answer
+	= f.input :content, :label => "Answer", :wrapper => false
+	= f.input :value, :wrapper => false
 	= f.hidden_field :_destroy
 	= link_to "Delete Answer", '#', :class => 'remove_fields button danger'

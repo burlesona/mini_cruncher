@@ -2,9 +2,8 @@
 	= f.error_notification
 	= f.input :content, :label => "Question"
 	= f.hidden_field :_destroy
-	.answers
-		= f.fields_for :answers, :defaults => {:wrapper => false} do |builder|
-			= render 'answer_fields', f: builder
-	.input
+	= f.fields_for :answers, :defaults => {:wrapper => false} do |builder|
+		= render 'answer_fields', f: builder
+	.input.question_controls
 		= link_to_add_fields "Add Answer", f, :answers
 		= link_to "Delete Question", '#', :class => 'remove_fields button danger'
