@@ -18,7 +18,7 @@ class Client < ActiveRecord::Base
 
 	# CALLBACKS
 	after_initialize :generate_code
-	before_save :assign_tests
+	before_create :assign_tests
 
 	# METHODS
 	def to_param
@@ -35,7 +35,7 @@ class Client < ActiveRecord::Base
 	end
 
 	def assign_tests
-		# TODO: This currently only assigns tests, it doesn't unassign them. Will need to fix that in the future.
+		# NOTE: This method is only used to assign tests on new client creation.
 		if master_test_ids.present?
 			master_test_ids.each do |master_id|
 				self.tests.find_or_create_by_master_test_id( master_id )

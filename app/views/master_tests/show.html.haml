@@ -1,9 +1,8 @@
-%p
-	%b Name:
-	= @master_test.name
+%h1= @master_test.name
 %p
 	%b Instructions:
 	= @master_test.instructions
+%hr
 
 - @master_test.question_groups.each do |question_group|
 	.group
@@ -17,6 +16,4 @@
 							%li= answer.content
 
 - if admin?
-	= link_to 'Edit', edit_master_test_path(@master_test)
-	|
-	= link_to 'Back', master_tests_path
+	= link_to 'Edit This Test', edit_master_test_path(@master_test), :class => 'button'

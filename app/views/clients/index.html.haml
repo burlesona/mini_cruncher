@@ -1,19 +1,16 @@
 %h1 Listing clients
 
 %table
-  %tr
-    %th Code
-    %th
-    %th
-    %th
+	%tr
+		%th Code
+		%th Date Created
+		%th Controls
+	- @clients.each do |client|
+		%tr
+			%td= client.code
+			%td= client.created_at.strftime("%b %m, %Y")
+			%td
+				= link_to 'View Client', client, :class => 'button'
+				= link_to 'Delete', client, :confirm => 'Are you sure?', :method => :delete, :class => 'button danger'
 
-  - @clients.each do |client|
-    %tr
-      %td= client.code
-      %td= link_to 'Show', client
-      %td= link_to 'Edit', edit_client_path(client)
-      %td= link_to 'Destroy', client, :confirm => 'Are you sure?', :method => :delete
-
-%br
-
-= link_to 'New Client', new_client_path
+= link_to 'Generate New Client', new_client_path, :class => 'button'

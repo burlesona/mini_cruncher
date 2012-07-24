@@ -7,7 +7,13 @@
 		- @client.tests.each do |test|
 			%li
 				= link_to test.name, edit_test_path( test )
-				= link_to "Delete", test, :method => :delete, :confirm => "Are you sure?", :class => "small button danger" if admin?
+				= link_to "Unassign", test_path(test, :redirect_back => 1), :method => :delete, :confirm => "Are you sure you wish to unassign this test? Any current progress on this test will be lost.", :class => "small button danger" if admin?
 
 - if admin?
-	= link_to "Edit Client", edit_client_path( @client )
+	%p
+		%strong Assign Another Test:
+		= simple_form_for @new_test, :html => { :class => 'stacked' } do |f|
+			= f.hidden_field :client_id, :value => @client.id
+			= f.association :master_test, :label => false, :collection => MasterTest.all
+			= hidden_field_tag :redirect_back, "1"
+			= f.submit "Assign"

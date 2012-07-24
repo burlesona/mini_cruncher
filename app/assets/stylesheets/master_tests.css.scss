@@ -11,6 +11,15 @@ form {
 			fieldset { background : $tl3; }
 		}
 	}
+
+	div.input.check_boxes {
+		label.control-label { display: block; }
+		label.checkbox {
+			font-size: $base_size - 1px; font-weight: 500; 
+			input { margin-right: $baseline/2; margin-top: 1px; }
+		}
+	}
+
 }
 
 form.master_test {

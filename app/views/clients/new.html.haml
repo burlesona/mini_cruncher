@@ -1,3 +1,6 @@
 %h1 New client
-= render 'form'
-= link_to 'Back', clients_path
+= simple_form_for @client, :html => { :class => 'stacked' } do |f|
+	= f.input :code, :disabled => true
+	= f.input :master_test_ids, :label => "Assign Tests", :collection => MasterTest.all, :as => :check_boxes
+	= f.submit
+= link_to 'Cancel', clients_path

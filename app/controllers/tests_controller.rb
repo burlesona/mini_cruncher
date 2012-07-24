@@ -19,7 +19,7 @@ class TestsController < ApplicationController
 		@test = Test.new(params[:test])
 
 		if @test.save
-			redirect_to @test, notice: 'Test was successfully created.'
+			redirect_to target_or(@test), notice: 'Test was successfully created.'
 		else
 			render :new
 		end
@@ -39,6 +39,16 @@ class TestsController < ApplicationController
 	def destroy
 		@test = Test.find(params[:id])
 		@test.destroy
-		redirect_to tests_url
+		redirect_to target_or(tests_url)
 	end
+
+	private
+	def target_or(object)
+		if params[:redirect_back]
+			:back
+		else
+			object
+		end
+	end
+
 end

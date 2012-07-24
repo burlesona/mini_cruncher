@@ -7,7 +7,7 @@ class ClientsController < ApplicationController
 
 	def show
 		@client = Client.find_by_code(params[:id])
-		@master_tests = MasterTest.all
+		@new_test = Test.new
 	end
 
 	def new
