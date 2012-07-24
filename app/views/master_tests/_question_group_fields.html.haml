@@ -4,5 +4,6 @@
 	= f.hidden_field :_destroy
 	= f.fields_for :questions do |builder|
 		= render 'question_fields', f: builder
-	.input= link_to_add_fields "Add Questions", f, :questions
-	= link_to "Delete Question Group", '#', :class => 'remove_fields button danger'
+	.input.inset
+		= link_to_add_fields "Add Questions", f, :questions
+		= link_to "Delete Question Group", '#', :class => 'remove_fields button danger'

@@ -1,6 +1,5 @@
-%fieldset.answer
-	= f.error_notification
-	= f.input :content, :label => "Answer", :wrapper => false, :label_html => { :class => "answer" }, :input_html => { :class => "answer" }
-	= f.input :value, :wrapper => false, :label_html => { :class => "value" }, :input_html => { :class => "value" }
+.answer
+	= f.input :content, :label => "Answer"
+	= f.input :value
 	= f.hidden_field :_destroy
-	= link_to "Delete", '#', :class => 'remove_fields button danger'
+	= link_to "Delete Answer", '#', :class => 'remove_fields button danger'
