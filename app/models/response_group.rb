@@ -3,7 +3,7 @@ class ResponseGroup < ActiveRecord::Base
   attr_accessible :test_id, :question_group_id, :responses_attributes
   
   # ASSOCIATIONS
-  belongs_to :test
+  belongs_to :assignment
   belongs_to :question_group
   has_many :responses
   accepts_nested_attributes_for :responses, :allow_destroy => true

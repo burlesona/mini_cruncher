@@ -9,7 +9,7 @@ class ClientsController < ApplicationController
 		@client = Client.find_by_code(params[:id])
 		authorize! @client
 		
-		@new_test = Test.new
+		@new_assignment = Assignment.new
 	end
 
 	def new

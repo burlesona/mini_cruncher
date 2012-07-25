@@ -7,7 +7,7 @@ MiniCruncher::Application.routes.draw do
   	post 'lookup', :on => :collection
   end
 	resources :master_tests
-  resources :tests
+  resources :assignments
 
   root :to => "home#show"
 end

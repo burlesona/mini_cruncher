@@ -1,4 +1,4 @@
-class Test < ActiveRecord::Base
+class Assignment < ActiveRecord::Base
 	# MASS-ASSIGNMENT PROTECTION
 	attr_accessible :client_id, :master_test_id, :response_groups_attributes
 

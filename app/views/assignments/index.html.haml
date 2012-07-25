@@ -1,0 +1,21 @@
+%h1 Listing Assignments
+
+%table
+  %tr
+    %th Client
+    %th Master Test
+    %th
+    %th
+    %th
+
+  - @assignments.each do |assignment|
+    %tr
+      %td= assignment.client
+      %td= assignment.master_test
+      %td= link_to 'Show', assignment
+      %td= link_to 'Edit', edit_assignment_path(assignment)
+      %td= link_to 'Destroy', assignment, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'Assign a new test', new_assignment_path, :class => 'button'
