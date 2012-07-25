@@ -5,7 +5,7 @@ class ResponseGroup < ActiveRecord::Base
   # ASSOCIATIONS
   belongs_to :assignment
   belongs_to :question_group
-  has_many :responses
+  has_many :responses, :dependent => :destroy
   accepts_nested_attributes_for :responses, :allow_destroy => true
   
   # VALIDATIONS

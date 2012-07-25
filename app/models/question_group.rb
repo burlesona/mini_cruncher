@@ -4,8 +4,8 @@ class QuestionGroup < ActiveRecord::Base
 
   # ASSOCIATIONS
   belongs_to :master_test
-  has_many :response_groups
-  has_many :questions
+  has_many :response_groups, :dependent => :destroy
+  has_many :questions, :dependent => :destroy
   accepts_nested_attributes_for :questions, :allow_destroy => true
 
   # METHODS

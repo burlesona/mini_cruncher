@@ -5,7 +5,7 @@ class Assignment < ActiveRecord::Base
 	# ASSOCIATIONS
 	belongs_to :client
 	belongs_to :master_test
-	has_many :response_groups
+	has_many :response_groups, :dependent => :destroy
 	accepts_nested_attributes_for :response_groups, :allow_destroy => true
 
 	# VALIDATIONS

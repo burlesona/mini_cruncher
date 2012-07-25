@@ -9,7 +9,7 @@ class Client < ActiveRecord::Base
 	end
 
 	# ASSOCIATIONS
-	has_many :assignments
+	has_many :assignments, :dependent => :destroy
 	has_many :master_tests, :through => :assignments
 
 	# VALIDATIONS
