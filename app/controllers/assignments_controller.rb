@@ -28,10 +28,10 @@ class AssignmentsController < ApplicationController
 	end
 
 	def update
+		debugger
 		@assignment = Assignment.find(params[:id])
 		authorize! @assignment.client
-
-		if @assignment.update_attributes(params[:assignment])
+		if @assignment.update_attributes( params[:assignment] )
 			redirect_to target_or(@assignment), notice: 'Assignment was successfully updated.'
 		else
 			render :edit

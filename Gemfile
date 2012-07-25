@@ -17,6 +17,7 @@ group :assets do
 end
 
 group :development, :test do
+	gem 'ruby-debug19'
 	gem 'sqlite3'
 	gem 'rspec-rails'
 	gem 'spork-rails'

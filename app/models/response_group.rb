@@ -1,6 +1,6 @@
 class ResponseGroup < ActiveRecord::Base
   # MASS-ASSIGNMENT PROTECTION
-  attr_accessible :test_id, :question_group_id, :responses_attributes
+  attr_accessible :assignment_id, :question_group_id, :responses_attributes
   
   # ASSOCIATIONS
   belongs_to :assignment
@@ -9,7 +9,7 @@ class ResponseGroup < ActiveRecord::Base
   accepts_nested_attributes_for :responses, :allow_destroy => true
   
   # VALIDATIONS
-  validates_presence_of :test
+  validates_presence_of :assignment
 
   # CALLBACKS
   before_create :setup_responses
