@@ -14,6 +14,9 @@ class ResponseGroup < ActiveRecord::Base
   # CALLBACKS
   before_create :setup_responses
 
+  # SCOPES
+  scope :by_name, joins(:question_group).order('question_groups.name')
+
   # METHODS
   delegate :name, :to => :question_group
 
