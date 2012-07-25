@@ -17,5 +17,4 @@ class ApplicationController < ActionController::Base
  			redirect_to root_path, :notice => "You are not authorized to view this page."
  		end
   end
-
 end

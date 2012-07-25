@@ -9,8 +9,8 @@ class Client < ActiveRecord::Base
 	end
 
 	# ASSOCIATIONS
-	has_many :tests
-	has_many :master_tests, :through => :tests
+	has_many :assignments
+	has_many :master_tests, :through => :assignments
 
 	# VALIDATIONS
 	validates_presence_of :code
@@ -38,7 +38,7 @@ class Client < ActiveRecord::Base
 		# NOTE: This method is only used to assign tests on new client creation.
 		if master_test_ids.present?
 			master_test_ids.each do |master_id|
-				self.tests.find_or_create_by_master_test_id( master_id )
+				self.assignments.find_or_create_by_master_test_id( master_id )
 			end
 		end
 	end

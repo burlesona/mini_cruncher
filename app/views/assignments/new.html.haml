@@ -1,0 +1,8 @@
+%h1 Assign a assignment
+
+= simple_form_for @assignment, :html => { :class => 'standard' } do |f|
+	= f.association :client
+	= f.association :master_test
+	= f.submit
+
+= link_to 'Back', assignments_path

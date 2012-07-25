@@ -1,21 +1,21 @@
 %h1
 	Taking Test:
-	= @test.name
+	= @assignment.name
 .instructions
 	%strong Instructions:
-	= @test.instructions
+	= @assignment.instructions
 
 %hr 
 
 %h2 Questions
-= simple_form_for @test, :html => { :class => 'stacked' } do |f|
+= simple_form_for @assignment, :html => { :class => 'stacked' } do |f|
 	= f.fields_for :response_groups, do |group_f|
 		= group_f.fields_for :responses, do |response_f|
 			%strong= response_f.object.prompt
 			= response_f.association :answer, :collection => response_f.object.question.answers, :as => :radio_buttons
 
 	- unless admin?
-		= hidden_field_tag :target, client_path(@test.client)
+		= hidden_field_tag :target, client_path(@assignment.client)
 	= f.submit "Save"
 
-= link_to 'Cancel', tests_path
+= link_to 'Cancel', :back

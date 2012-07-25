@@ -1,19 +1,19 @@
 %p
 	%strong Client:
-	= @test.client
+	= @assignment.client
 %p
 	%h1
-		= @test.name
+		= @assignment.name
 %p
 	%h3 Result Summary
 	%ul.results
-		- @test.response_groups.each do |group|
+		- @assignment.response_groups.by_name.each do |group|
 			%li
 				%strong= group.name + ":"
 				= group.total_value
 %p
 	%h3 Responses
-	- @test.response_groups.each do |group|
+	- @assignment.response_groups.each do |group|
 		.response_group
 			%strong= group.name
 			%ol.responses
@@ -24,4 +24,4 @@
 						= response.answer
 
 %p
-	= link_to 'Back to Client Page', client_path(@test.client)
+	= link_to 'Back to Client Page', client_path(@assignment.client)
