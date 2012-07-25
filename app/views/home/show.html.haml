@@ -3,11 +3,10 @@
 	%p Client Assessment Tool
 
 %p
-	Please enter your login code below.
+	Please enter your client acces code:
 = form_tag lookup_clients_path, :class => 'stacked' do
-	.input
+	.client_login
 		= text_field_tag :id
-	.input
 		= submit_tag "Login"
 
 .admin_login

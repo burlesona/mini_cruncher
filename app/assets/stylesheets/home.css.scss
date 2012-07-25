@@ -1,4 +1,12 @@
 div.branding {
+	margin-bottom: $baseline *3;
 	h1 { font-weight: 300; margin: 0; }
 	p { font-size: 18px; color: $gray; }
+}
+div.client_login {
+	input[type=text] {
+		@include standard_input;
+		width: 15%; margin-right: 1%;
+	}
+	input[type=submit] { @include inline_submit; }
 }
