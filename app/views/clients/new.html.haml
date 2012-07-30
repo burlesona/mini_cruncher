@@ -1,6 +1,11 @@
 %h1 New client
 = simple_form_for @client, :html => { :class => 'stacked' } do |f|
-	= f.input :code, :disabled => true
+	= f.error_notification
+	.input
+		= f.label :code, "Client Code"
+		= @client.code
+		= f.hidden_field :code
+	
 	= f.input :master_test_ids, :label => "Assign Tests", :collection => MasterTest.all, :as => :check_boxes
 	= f.submit
 = link_to 'Cancel', clients_path
