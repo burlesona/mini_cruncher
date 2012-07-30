@@ -29,8 +29,14 @@ class Client < ActiveRecord::Base
 		code
 	end
 
+	def code=(s)
+		write_attribute( :code, s.to_s.upcase )
+	end
+
 	private
 	def generate_code
+		# NOTE: The attr writer makes this not *have* to be upcased,
+		# but we may as well keep it in caps from the get go.
 		self.code ||= SecureRandom.hex(3).upcase
 	end
 

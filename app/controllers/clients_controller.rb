@@ -51,7 +51,7 @@ class ClientsController < ApplicationController
 	# if a valid code is found.
 	def lookup
 		reset_session
-		if @client = Client.find_by_code(params[:id])
+		if @client = Client.find_by_code( params[:id].to_s.upcase )
 			session[:client] = @client.code
 			redirect_to @client, :notice => "Logged in."
 		else
